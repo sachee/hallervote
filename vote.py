@@ -44,6 +44,7 @@ def stats():
 @app.route("/tally", methods=['GET'])
 def tally():
   tallied = {}
+  results = []
   all_votes = [x.lower() for x in votes.values()]
 
   for vote in all_votes:
@@ -52,7 +53,11 @@ def tally():
     else:
       tallied[vote] += 1
 
-  return str(tallied)
+  for key in tallied:
+    output = key + ': ' + str(tallied[key])
+    results.append(output)
+
+  return '<br>'.join(results)
 
 pusheens = [
   'http://geekxgirls.com/images/catcostumes/pusheen_cat_halloween_costumes_18.gif',
@@ -82,4 +87,3 @@ pusheens = [
 
 if __name__ == "__main__":
     app.run(debug=True)
-
