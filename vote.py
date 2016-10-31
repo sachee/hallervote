@@ -5,6 +5,7 @@ import shelve
 import random
 
 # run ngrok server: ngrok 5000
+# or, uncomment line at bottom to run on a server
 
 app = Flask(__name__)
 
@@ -86,4 +87,5 @@ pusheens = [
 ]
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True) # run locally
+    #app.run(debug=True, host='0.0.0.0', port=80) # run on a server
